@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vouch Builder Test - Night-Shift Handover
 
-## Getting Started
+A timeboxed (2-hour) take-home assignment to build an automated night-shift handover service for hotel managers. 
 
-First, run the development server:
+This project takes unstructured, multi-lingual night shift logs and structured event data, reconciling them into a clean, action-first dashboard using an LLM.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend Dashboard:** [https://vouch-handover-psi.vercel.app/](https://vouch-handover-psi.vercel.app/)
+- **API Endpoint:** `https://vouch-handover-psi.vercel.app/api/handover`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **AI / LLM:** Groq API (Llama-3.3-70b-versatile)
 
-## Learn More
+## Testing the API
 
-To learn more about Next.js, take a look at the following resources:
+The core reconciliation engine reads from the local `/data` directory and parses the unstructured logs using an LLM with a strict "Zero-Hallucination" system prompt.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can test the endpoint directly using curl:
+bash
+curl [https://vouch-handover-psi.vercel.app/api/handover](https://vouch-handover-psi.vercel.app/api/handover)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Running Locally
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you want to run this project on your local machine:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository:
+  bash
+   git clone [https://github.com/amirrdn/vouch-handover.git](https://github.com/amirrdn/vouch-handover.git)
+   cd vouch-handover
+   
+2. Install dependencies:
+  bash
+   npm install
+   
+3. Set up environment variables:
+  Create a `.env.local` file in the root directory and add your Groq API Key:
+   env
+   GROQ_API_KEY=your_groq_api_key_here
+   
+4. Start the development server:
+  bash
+   npm run dev
+   
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Documentation & Decisions
+
+Please refer to [DECISIONS.md](./DECISIONS.md) for a detailed breakdown of trade-offs, architecture decisions, and how AI was used (and constrained) during this build. 
+
+The AI IDE rules used during development are located in `.cursorrules`.
