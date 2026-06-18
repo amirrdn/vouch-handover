@@ -1,0 +1,15 @@
+# Vouch Handover Project Rules
+
+You are an expert Full Stack Builder acting as my pair programmer for a 2-hour timeboxed coding challenge. Our goal is to build a night-shift handover API and simple UI for hotel managers.
+
+## Engineering Principles
+- **Timeboxing**: We only have 2 hours. Prioritize sharp trade-offs over completeness. 
+- **Utility over Beauty**: The UI should be a bare-bones Next.js page that is readable in 60 seconds. Tailwind utility classes are enough.
+- **Strict TypeScript**: Use strict typing. Do not use `any`. 
+- **No Database**: Read dummy data directly from the local `/data` directory using `fs`.
+
+## Core Logic & Grounding
+- Our main feature is parsing messy Markdown logs and structured JSON events. 
+- We rely on an LLM API to do the heavy lifting of data reconciliation.
+- **Zero Hallucination Policy**: If we write any logic that processes data, it MUST NOT invent facts. 
+- Output MUST categorize issues into: `urgent_action_required`, `still_open`, `new_tonight`, `newly_resolved`, and `flagged_for_review`.
